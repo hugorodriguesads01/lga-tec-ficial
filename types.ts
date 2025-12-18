@@ -6,6 +6,7 @@ export interface NavLink {
 }
 
 export interface FeatureProps {
+  id?: string;
   badge?: string;
   title: string;
   description: string;

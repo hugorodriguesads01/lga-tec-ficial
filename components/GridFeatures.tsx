@@ -53,7 +53,7 @@ export const GridFeatures: React.FC = () => {
   };
 
   return (
-    <section className="py-16 relative overflow-hidden bg-black">
+    <section id="beneficios" className="py-16 relative overflow-hidden bg-black scroll-mt-16">
       {/* Background Image Layer - Fixed Mobile Zoom Issue */}
       <div className="absolute inset-x-0 top-0 h-[600px] md:h-full z-0 overflow-hidden">
          <img 

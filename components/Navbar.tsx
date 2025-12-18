@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Benefícios', href: '#' },
-  { label: 'Serviços', href: '#' },
-  { label: 'Contato', href: '#' },
+  { label: 'Benefícios', href: '#beneficios' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Contato', href: '#contato' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const whatsappLink = "https://api.whatsapp.com/send/?phone=5551984494900&text&type=phone_number&app_absent=0&utm_source=ig";
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false);
+      }
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10 supports-[backdrop-filter]:bg-black/20">
@@ -25,6 +36,7 @@ export const Navbar: React.FC = () => {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className="text-xs text-gray-400 hover:text-white transition-colors font-medium tracking-wide"
             >
               {link.label}
@@ -61,7 +73,7 @@ export const Navbar: React.FC = () => {
               key={link.label}
               href={link.href}
               className="block text-gray-400 hover:text-white font-medium text-sm"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleLinkClick(e, link.href)}
             >
               {link.label}
             </a>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ScrollReveal } from './ui/ScrollReveal';
 
 export const FeatureSection: React.FC<FeatureProps> = ({ 
+  id,
   badge, 
   title, 
   description, 
@@ -13,7 +14,7 @@ export const FeatureSection: React.FC<FeatureProps> = ({
   children 
 }) => {
   return (
-    <section className="py-16 max-w-7xl mx-auto px-6 overflow-hidden">
+    <section id={id} className="py-16 max-w-7xl mx-auto px-6 overflow-hidden">
       <div className={`flex flex-col md:flex-row items-center gap-16 ${imageSide === 'right' ? '' : 'md:flex-row-reverse'}`}>
         
         {/* Text Content */}

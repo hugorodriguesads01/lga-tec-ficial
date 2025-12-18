@@ -110,6 +110,7 @@ const App: React.FC = () => {
 
         {/* 6) Oferta (With Image) */}
         <FeatureSection
+          id="servicos"
           title="Serviço Elétrico Profissional LGA"
           description="Inclui: diagnóstico técnico completo, execução (instalação/manutenção/reparo), materiais adequados, acabamento profissional, garantia, suporte via WhatsApp e relatório simples quando necessário."
           imageSide="left"

@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   const instagramLink = "https://www.instagram.com/lga_tec/";
 
   return (
-    <footer className="pt-16 pb-10 border-t border-white/5 bg-black">
+    <footer id="contato" className="pt-16 pb-10 border-t border-white/5 bg-black scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
           <div className="md:col-span-2">
