@@ -6,7 +6,7 @@ export const BottomCTA: React.FC = () => {
   const whatsappLink = "https://api.whatsapp.com/send/?phone=5551984494900&text&type=phone_number&app_absent=0&utm_source=ig";
 
   return (
-    <section className="relative py-20 overflow-hidden bg-transparent">
+    <section className="relative py-12 md:py-20 overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-0">
           <img 
               src="https://i.imgur.com/ZLOrONS.webp" 
@@ -23,7 +23,7 @@ export const BottomCTA: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           // Glass Effect Transparente: bg-white/10 e borda mais sutil
-          className="relative rounded-[2.5rem] overflow-hidden text-center py-20 px-6 border border-white/20 shadow-2xl bg-white/10 backdrop-blur-2xl"
+          className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden text-center py-12 px-6 md:py-20 md:px-6 border border-white/20 shadow-2xl bg-white/10 backdrop-blur-2xl"
         >
           <GlowingEffect
             spread={50}
@@ -40,7 +40,7 @@ export const BottomCTA: React.FC = () => {
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl font-heading font-light text-black mb-6 leading-tight"
+              className="text-3xl md:text-5xl font-heading font-light text-black mb-4 md:mb-6 leading-tight"
             >
               Explique o que precisa
             </motion.h2>
@@ -48,7 +48,7 @@ export const BottomCTA: React.FC = () => {
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-900 mb-10 text-sm md:text-lg font-medium leading-relaxed"
+              className="text-gray-900 mb-8 md:mb-10 text-sm md:text-lg font-medium leading-relaxed"
             >
               Receba o diagnóstico e tenha o problema resolvido com segurança e agilidade.
             </motion.p>
@@ -61,7 +61,7 @@ export const BottomCTA: React.FC = () => {
               transition={{ delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-lga text-white font-semibold px-12 py-4 rounded-xl transition-all shadow-2xl hover:bg-[#2e3175] inline-block cursor-pointer text-base"
+              className="group relative overflow-hidden bg-lga text-white font-semibold px-8 py-4 md:px-12 md:py-4 rounded-xl transition-all shadow-2xl hover:bg-[#2e3175] inline-block cursor-pointer text-sm md:text-base w-full md:w-auto"
             >
               <span className="relative z-10">
                 Fale com Especialista no WhatsApp

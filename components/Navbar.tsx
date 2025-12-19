@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -11,24 +11,37 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const whatsappLink = "https://api.whatsapp.com/send/?phone=5551984494900&text&type=phone_number&app_absent=0&utm_source=ig";
 
+  // Bloqueia o scroll do corpo quando o menu mobile está aberto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
         setIsOpen(false);
+        // Pequeno delay para permitir que o menu feche antes de scrollar
+        setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     }
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-xl border-b border-white/20 supports-[backdrop-filter]:bg-white/20 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative z-50">
         <div className="flex items-center">
-          <img src="https://i.imgur.com/277Rqxs.png" alt="LGA TEC" className="h-9 w-auto" />
+          <img src="https://i.imgur.com/277Rqxs.png" alt="LGA TEC" className="h-8 md:h-9 w-auto" />
         </div>
 
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -53,39 +66,45 @@ export const Navbar: React.FC = () => {
           </a>
         </div>
 
+        {/* Mobile Toggle Button */}
         <button
-          className="md:hidden text-gray-600 hover:text-black"
+          className="md:hidden text-gray-700 hover:text-black p-2 -mr-2 active:bg-black/5 rounded-full transition-colors"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white/80 backdrop-blur-xl border-b border-black/5 p-6 space-y-4 absolute w-full shadow-2xl">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="block text-gray-700 hover:text-black font-semibold text-sm"
-              onClick={(e) => handleLinkClick(e, link.href)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="pt-4 border-t border-black/5 flex flex-col gap-3">
+      {/* Mobile Menu Overlay - Full Screen */}
+      <div className={`fixed inset-0 top-16 bg-white/95 backdrop-blur-xl z-40 md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
+        <div className="flex flex-col p-6 space-y-6 h-full overflow-y-auto pb-24">
+          <div className="space-y-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="block text-gray-800 hover:text-lga font-medium text-lg py-3 border-b border-gray-100"
+                onClick={(e) => handleLinkClick(e, link.href)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          
+          <div className="pt-4 mt-auto">
             <a 
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-lga hover:bg-[#2e3175] text-white py-3 rounded-xl font-semibold text-sm text-center shadow-lg transition-colors"
+              className="flex items-center justify-center w-full bg-lga hover:bg-[#2e3175] text-white py-4 rounded-xl font-bold text-base shadow-lg transition-transform active:scale-95"
             >
               Fale no WhatsApp
             </a>
+            <p className="text-center text-xs text-gray-400 mt-6 uppercase tracking-widest">LGA TEC Oficial</p>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

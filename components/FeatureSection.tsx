@@ -14,8 +14,8 @@ export const FeatureSection: React.FC<FeatureProps> = ({
   children 
 }) => {
   return (
-    <section id={id} className="py-20 max-w-7xl mx-auto px-6 overflow-hidden">
-      <div className={`flex flex-col md:flex-row items-center gap-12 md:gap-20 ${imageSide === 'right' ? '' : 'md:flex-row-reverse'}`}>
+    <section id={id} className="py-12 md:py-20 max-w-7xl mx-auto px-6 overflow-hidden">
+      <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-20 ${imageSide === 'right' ? '' : 'md:flex-row-reverse'}`}>
         
         {/* Text Content */}
         <div className="flex-1 space-y-6 w-full">
@@ -27,7 +27,7 @@ export const FeatureSection: React.FC<FeatureProps> = ({
               </div>
             )}
             
-            <h2 className="text-3xl md:text-5xl font-heading font-light text-black leading-tight mt-1">
+            <h2 className="text-2xl md:text-5xl font-heading font-light text-black leading-tight mt-1">
               {title}
             </h2>
             
@@ -35,7 +35,7 @@ export const FeatureSection: React.FC<FeatureProps> = ({
               {description}
             </p>
             
-            <div className="space-y-4 pt-6">
+            <div className="space-y-4 pt-4 md:pt-6">
               {points.map((point, idx) => (
                 <motion.div 
                   key={idx} 
@@ -45,10 +45,10 @@ export const FeatureSection: React.FC<FeatureProps> = ({
                   viewport={{ once: true }}
                   className="flex items-center gap-3"
                 >
-                  <div className="p-2 rounded-lg bg-lga/5 border border-lga/10 text-lga shadow-sm">
+                  <div className="flex-shrink-0 p-2 rounded-lg bg-lga/5 border border-lga/10 text-lga shadow-sm">
                     {point.icon}
                   </div>
-                  <span className="text-gray-800 text-sm font-semibold">{point.text}</span>
+                  <span className="text-gray-800 text-sm font-semibold leading-snug">{point.text}</span>
                 </motion.div>
               ))}
             </div>

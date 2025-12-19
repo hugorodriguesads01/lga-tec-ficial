@@ -27,24 +27,24 @@ const testimonials = [
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 relative overflow-hidden bg-transparent">
+    <section className="py-12 md:py-20 relative overflow-hidden bg-transparent">
       {/* Background decorativo sutil */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(60,64,148,0.03),transparent_70%)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <ScrollReveal direction="down">
             <div className="flex justify-center mb-4">
               <Quote size={28} className="text-lga opacity-30" />
             </div>
             <span className="text-xs font-bold text-lga uppercase tracking-widest mb-2 block">Prova Social</span>
-            <h2 className="text-4xl font-heading font-light text-[#0A0A0A]">
+            <h2 className="text-3xl md:text-4xl font-heading font-light text-[#0A0A0A]">
               O que nossos clientes dizem
             </h2>
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((t, idx) => (
             <motion.div 
               key={idx} 
@@ -52,8 +52,8 @@ export const Testimonials: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              // Glass Effect Transparente: bg-white/10 ao invés de 60
-              className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] shadow-sm transition-all duration-300 p-8 group relative"
+              // Glass Effect Transparente: ajustado padding p-6 mobile vs p-8 desktop
+              className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] shadow-sm transition-all duration-300 p-6 md:p-8 group relative"
             >
               <GlowingEffect
                 spread={40}
@@ -75,7 +75,7 @@ export const Testimonials: React.FC = () => {
                 </p>
                 
                 <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-lga to-[#2a2d66] flex items-center justify-center text-white font-bold shadow-lg shadow-lga/50">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-lga to-[#2a2d66] flex items-center justify-center text-white font-bold shadow-lg shadow-lga/50 text-sm md:text-base">
                     {t.initial}
                   </div>
                   <div>

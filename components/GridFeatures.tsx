@@ -53,7 +53,7 @@ export const GridFeatures: React.FC = () => {
   };
 
   return (
-    <section id="beneficios" className="py-20 relative overflow-hidden bg-transparent scroll-mt-16">
+    <section id="beneficios" className="py-12 md:py-20 relative overflow-hidden bg-transparent scroll-mt-16">
       <div className="absolute inset-x-0 top-0 h-[500px] md:h-full z-0 overflow-hidden">
          <img 
             src="https://i.imgur.com/jirpXOy.webp" 
@@ -65,7 +65,7 @@ export const GridFeatures: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
            <motion.span 
              initial={{ opacity: 0, y: 10 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -88,15 +88,15 @@ export const GridFeatures: React.FC = () => {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
         >
           {benefits.map((item, idx) => (
             <motion.div 
               key={idx} 
               variants={itemVariant}
-              // Efeito Glass Transparente: bg-white/10 (ao invés de 60), mantendo blur para legibilidade
-              className="group relative rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:bg-white/20 p-8 overflow-hidden"
+              // Efeito Glass Transparente: Ajustado padding mobile p-6 vs desktop p-8
+              className="group relative rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:bg-white/20 p-6 md:p-8 overflow-hidden"
             >
               {/* Glowing Effect para interação do mouse */}
               <GlowingEffect
@@ -109,10 +109,10 @@ export const GridFeatures: React.FC = () => {
               />
               
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-lga/10 to-white/50 border border-white/40 shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-lga/10 to-white/50 border border-white/40 shadow-sm flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-medium text-black mb-3 group-hover:text-lga transition-colors">{item.title}</h3>
+                <h3 className="text-lg md:text-xl font-medium text-black mb-2 md:mb-3 group-hover:text-lga transition-colors">{item.title}</h3>
                 <p className="text-gray-900 text-sm leading-relaxed font-medium">
                   {item.desc}
                 </p>
