@@ -76,9 +76,27 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay - Full Screen */}
-      <div className={`fixed inset-0 top-16 bg-white/95 backdrop-blur-xl z-40 md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
-        <div className="flex flex-col p-6 space-y-6 h-full overflow-y-auto pb-24">
+      {/* Mobile Menu Overlay - Full Screen with Texture and Real Glass Effect */}
+      <div className={`fixed inset-0 top-16 z-40 md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
+        
+        {/* Camada 1: Fundo com "corpo" (quase opaco para não perder textura no branco) */}
+        <div className="absolute inset-0 bg-[#F8F9FA]/95 backdrop-blur-xl"></div>
+        
+        {/* Camada 2: Textura de Ruído (Noise) intensificada para visibilidade */}
+        <div 
+          className="absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-multiply" 
+          style={{ 
+            backgroundImage: 'url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")', 
+            backgroundRepeat: 'repeat', 
+            backgroundSize: '128px' 
+          }}
+        ></div>
+
+        {/* Camada 3: Gradiente para profundidade sutil */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-200/50 to-transparent pointer-events-none"></div>
+
+        {/* Conteúdo do Menu */}
+        <div className="relative z-10 flex flex-col p-6 space-y-6 h-full overflow-y-auto pb-24 border-t border-black/5 shadow-[inset_0_2px_15px_rgba(0,0,0,0.03)]">
           <div className="space-y-2">
             {navLinks.map((link) => (
               <a
