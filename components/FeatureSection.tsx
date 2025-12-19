@@ -58,8 +58,10 @@ export const FeatureSection: React.FC<FeatureProps> = ({
         {/* Visual Content */}
         <div className="flex-1 w-full">
            <ScrollReveal direction={imageSide === 'right' ? 'left' : 'right'} delay={0.2} width="100%">
-             {/* Container Transparente: bg-white/10 ao invés de bg-white */}
-             <div className="relative aspect-square md:aspect-[4/3] w-full rounded-2xl bg-white/10 border border-white/20 overflow-hidden shadow-2xl shadow-gray-200/50 group transition-all duration-500 hover:shadow-gray-200/80">
+             {/* Container Transparente: bg-white/10 ao invés de bg-white 
+                 Alterado aspect-square para aspect-[3/2] no mobile para evitar zoom excessivo
+             */}
+             <div className="relative aspect-[3/2] md:aspect-[4/3] w-full rounded-2xl bg-white/10 border border-white/20 overflow-hidden shadow-2xl shadow-gray-200/50 group transition-all duration-500 hover:shadow-gray-200/80">
                <div className="absolute inset-0 flex items-center justify-center">
                   {children}
                </div>

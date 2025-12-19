@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
 
   return (
     <section 
-      className="fixed inset-0 z-0 h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden bg-white pt-0 pb-0"
+      className="fixed inset-0 z-0 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-white pt-0 pb-0"
     >
       {/* 
          Shader com mix-blend-multiply e Opacidade total.
@@ -26,7 +26,13 @@ export const Hero: React.FC = () => {
         className="absolute top-0 left-0 w-full h-[500px] bg-hero-glow pointer-events-none z-1"
       ></motion.div>
 
-      <div className="relative max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center mt-16 md:mt-0">
+      {/* 
+         Correção Mobile: 
+         - mt-0: remove o espaçamento forçado no topo.
+         - pb-24: levanta o conteúdo visualmente para não ficar "fundo demais" ou cobrindo a onda.
+         - justify-center: garante alinhamento vertical flexbox.
+      */}
+      <div className="relative max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center justify-center mt-0 pb-24 md:pb-0">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
