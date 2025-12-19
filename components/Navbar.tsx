@@ -23,42 +23,38 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10 supports-[backdrop-filter]:bg-black/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-xl border-b border-white/20 supports-[backdrop-filter]:bg-white/20 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo - Only the image as requested */}
         <div className="flex items-center">
           <img src="https://i.imgur.com/277Rqxs.png" alt="LGA TEC" className="h-9 w-auto" />
         </div>
 
-        {/* Desktop Links - Mono */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-xs text-gray-400 hover:text-white transition-colors font-medium tracking-wide"
+              className="text-xs text-gray-600 hover:text-black transition-colors font-semibold tracking-wide"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* Auth Buttons - Mono */}
         <div className="hidden md:flex items-center gap-4">
           <a 
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-medium bg-white/5 hover:bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/10 transition-all shadow-lg hover:shadow-white/5 tracking-wide"
+            className="text-xs font-semibold bg-lga hover:bg-[#2e3175] text-white px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 tracking-wide"
           >
             Fale no WhatsApp
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-400 hover:text-white"
+          className="md:hidden text-gray-600 hover:text-black"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,23 +63,23 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-xl border-b border-white/10 p-6 space-y-4 absolute w-full">
+        <div className="md:hidden bg-white/80 backdrop-blur-xl border-b border-black/5 p-6 space-y-4 absolute w-full shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="block text-gray-400 hover:text-white font-medium text-sm"
+              className="block text-gray-700 hover:text-black font-semibold text-sm"
               onClick={(e) => handleLinkClick(e, link.href)}
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+          <div className="pt-4 border-t border-black/5 flex flex-col gap-3">
             <a 
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-white/10 backdrop-blur-md text-white py-2 rounded-lg font-medium border border-white/10 text-sm text-center"
+              className="w-full bg-lga hover:bg-[#2e3175] text-white py-3 rounded-xl font-semibold text-sm text-center shadow-lg transition-colors"
             >
               Fale no WhatsApp
             </a>

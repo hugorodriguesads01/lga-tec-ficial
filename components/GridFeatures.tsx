@@ -6,32 +6,32 @@ import { motion, Variants } from 'framer-motion';
 export const GridFeatures: React.FC = () => {
   const benefits = [
     { 
-      icon: <ShieldCheck className="text-white" size={24} />, 
+      icon: <ShieldCheck className="text-lga" size={24} />, 
       title: "Mais segurança", 
       desc: "Mais segurança no ambiente de trabalho ou para você e sua família." 
     },
     { 
-      icon: <Zap className="text-white" size={24} />, 
+      icon: <Zap className="text-lga" size={24} />, 
       title: "Sem riscos", 
       desc: "Evita curtos, choques e riscos elétricos graves." 
     },
     { 
-      icon: <TrendingDown className="text-white" size={24} />, 
+      icon: <TrendingDown className="text-lga" size={24} />, 
       title: "Economia", 
       desc: "Reduz gastos com retrabalho e desperdício de material." 
     },
     { 
-      icon: <Home className="text-white" size={24} />, 
+      icon: <Home className="text-lga" size={24} />, 
       title: "Valorização", 
       desc: "Valorização do imóvel com serviço profissional e bem acabado." 
     },
     { 
-      icon: <UserCheck className="text-white" size={24} />, 
+      icon: <UserCheck className="text-lga" size={24} />, 
       title: "Qualidade", 
       desc: "Tranquilidade ao contratar profissionais qualificados." 
     },
     { 
-      icon: <CheckCircle className="text-white" size={24} />, 
+      icon: <CheckCircle className="text-lga" size={24} />, 
       title: "Eficiência", 
       desc: "Execução correta na primeira vez, sem enrolação." 
     }
@@ -48,34 +48,29 @@ export const GridFeatures: React.FC = () => {
   };
 
   const itemVariant: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } }
   };
 
   return (
-    <section id="beneficios" className="py-16 relative overflow-hidden bg-black scroll-mt-16">
-      {/* Background Image Layer - Fixed Mobile Zoom Issue */}
-      <div className="absolute inset-x-0 top-0 h-[600px] md:h-full z-0 overflow-hidden">
+    <section id="beneficios" className="py-20 relative overflow-hidden bg-transparent scroll-mt-16">
+      <div className="absolute inset-x-0 top-0 h-[500px] md:h-full z-0 overflow-hidden">
          <img 
             src="https://i.imgur.com/jirpXOy.webp" 
             alt="Eletricista Profissional no Painel" 
-            className="w-full h-full object-cover object-center opacity-60"
+            className="w-full h-full object-cover object-center opacity-90 grayscale-[10%]"
          />
-         {/* 
-            Gradient overlay:
-            On mobile, it fades to black at the bottom of the 600px height.
-            On desktop, it covers the whole height smoothly.
-         */}
-         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black"></div>
+         {/* Gradiente sutil para misturar a imagem com o fundo, mas mantendo a imagem visível */}
+         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/05"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
            <motion.span 
              initial={{ opacity: 0, y: 10 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block"
+             className="text-[10px] font-bold text-lga uppercase tracking-[0.25em] mb-2 block"
            >
              Benefícios
            </motion.span>
@@ -83,8 +78,7 @@ export const GridFeatures: React.FC = () => {
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             transition={{ delay: 0.2 }}
-             className="text-3xl md:text-5xl font-sans font-light text-white max-w-2xl mx-auto drop-shadow-md"
+             className="text-3xl md:text-5xl font-heading font-light text-black max-w-2xl mx-auto leading-tight"
            >
              Por que escolher a LGA?
            </motion.h2>
@@ -95,15 +89,16 @@ export const GridFeatures: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {benefits.map((item, idx) => (
             <motion.div 
               key={idx} 
               variants={itemVariant}
-              className="group relative rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:bg-black/60"
+              // Efeito Glass Transparente: bg-white/10 (ao invés de 60), mantendo blur para legibilidade
+              className="group relative rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:bg-white/20 p-8 overflow-hidden"
             >
-              
+              {/* Glowing Effect para interação do mouse */}
               <GlowingEffect
                 spread={40}
                 glow={true}
@@ -112,19 +107,19 @@ export const GridFeatures: React.FC = () => {
                 inactiveZone={0.01}
                 borderWidth={2}
               />
-
-              {/* Subtle grid background inside the card */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 rounded-2xl pointer-events-none"></div>
               
-              <div className="relative z-10 p-8">
-                <div className="w-12 h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors shadow-inner group-hover:scale-110 duration-300">
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-lga/10 to-white/50 border border-white/40 shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-sans font-light text-white mb-3">{item.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed font-medium">
+                <h3 className="text-xl font-medium text-black mb-3 group-hover:text-lga transition-colors">{item.title}</h3>
+                <p className="text-gray-900 text-sm leading-relaxed font-medium">
                   {item.desc}
                 </p>
               </div>
+              
+              {/* Brilho decorativo no topo */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-30"></div>
             </motion.div>
           ))}
         </motion.div>

@@ -6,49 +6,41 @@ export const BottomCTA: React.FC = () => {
   const whatsappLink = "https://api.whatsapp.com/send/?phone=5551984494900&text&type=phone_number&app_absent=0&utm_source=ig";
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background Image Layer - Direct WebP Link */}
+    <section className="relative py-20 overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-0">
           <img 
               src="https://i.imgur.com/ZLOrONS.webp" 
               alt="Background CTA" 
-              className="w-full h-full object-cover opacity-60"
+              className="w-full h-full object-cover opacity-90 grayscale-[10%]"
           />
-          {/* Gradient Shadows for better contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/05 via-transparent to-white/05"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl overflow-hidden text-center py-20 px-6 border border-white/10 shadow-2xl bg-white/5 backdrop-blur-xl"
+          // Glass Effect Transparente: bg-white/10 e borda mais sutil
+          className="relative rounded-[2.5rem] overflow-hidden text-center py-20 px-6 border border-white/20 shadow-2xl bg-white/10 backdrop-blur-2xl"
         >
-          
           <GlowingEffect
-            spread={40}
+            spread={50}
             glow={true}
             disabled={false}
-            proximity={64}
+            proximity={80}
             inactiveZone={0.01}
-            borderWidth={2}
+            borderWidth={1}
           />
           
-          {/* Noise Texture for Glass feel */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
-          
-          {/* Subtle internal glows */}
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none"></div>
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none"></div>
-
-          <div className="relative z-10 max-w-2xl mx-auto">
+          <div className="relative z-10 max-w-xl mx-auto">
+            <span className="text-[10px] font-bold text-lga uppercase tracking-[0.2em] mb-4 block drop-shadow-sm">Fale Conosco</span>
             <motion.h2 
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl font-sans font-light text-white mb-6 drop-shadow-lg"
+              className="text-3xl md:text-5xl font-heading font-light text-black mb-6 leading-tight"
             >
               Explique o que precisa
             </motion.h2>
@@ -56,7 +48,7 @@ export const BottomCTA: React.FC = () => {
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-200 mb-10 max-w-lg mx-auto text-sm font-medium leading-relaxed"
+              className="text-gray-900 mb-10 text-sm md:text-lg font-medium leading-relaxed"
             >
               Receba o diagnóstico e tenha o problema resolvido com segurança e agilidade.
             </motion.p>
@@ -69,19 +61,8 @@ export const BottomCTA: React.FC = () => {
               transition={{ delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-white hover:bg-white/90 text-black font-semibold px-8 py-3 rounded-lg transition-all shadow-lg hover:shadow-white/20 text-sm inline-block cursor-pointer"
+              className="group relative overflow-hidden bg-lga text-white font-semibold px-12 py-4 rounded-xl transition-all shadow-2xl hover:bg-[#2e3175] inline-block cursor-pointer text-base"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <GlowingEffect
-                    spread={20}
-                    glow={true}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                    borderWidth={1}
-                    variant="white"
-                  />
-              </div>
               <span className="relative z-10">
                 Fale com Especialista no WhatsApp
               </span>

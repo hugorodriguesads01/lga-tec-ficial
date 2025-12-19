@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Zap, Clock, ArrowRight } from 'lucide-react';
 import { WebGLShader } from './ui/webgl-shader';
-import { GlowingEffect } from './ui/glowing-effect';
 import { motion } from 'framer-motion';
 
 export const Hero: React.FC = () => {
@@ -9,89 +8,78 @@ export const Hero: React.FC = () => {
 
   return (
     <section 
-      className="fixed inset-0 z-0 h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-background pt-20 pb-12 md:pt-0 md:pb-0"
+      className="fixed inset-0 z-0 h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-white pt-20 pb-12 md:pt-0 md:pb-0"
     >
-      {/* Background Effect - WebGL Shader */}
-      <WebGLShader className="opacity-80" />
+      {/* 
+         Shader com mix-blend-multiply e Opacidade total.
+         As linhas agora são cinza-claro (prateadas) diretamente no shader, 
+         então precisamos de opacidade total para vê-las.
+      */}
+      <WebGLShader className="mix-blend-multiply" />
 
-      {/* Static Overlay Layers (Gradient/Glow) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/10 to-[#030303] z-1 pointer-events-none"></div>
+      {/* Gradiente sutil apenas para dar profundidade sem branquear demais */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent z-1 pointer-events-none"></div>
       
-      {/* Top ambient glow - Adjusted for new background */}
+      {/* Glow superior mantido */}
       <motion.div 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
+        animate={{ opacity: 0.15 }}
         transition={{ duration: 1.5 }}
-        className="absolute top-0 left-0 w-full h-[600px] bg-hero-glow pointer-events-none z-1"
+        className="absolute top-0 left-0 w-full h-[500px] bg-hero-glow pointer-events-none z-1"
       ></motion.div>
 
       <div className="relative max-w-4xl mx-auto px-6 text-center z-10">
-        {/* Top Badges */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-8"
+          className="flex flex-wrap justify-center gap-3 mb-6"
         >
-          <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-gray-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 transition-colors cursor-default">
-            <Clock size={12} className="text-white" /> Rápido
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-gray-200/30 text-[10px] font-bold text-gray-700 shadow-sm transition-colors cursor-default">
+            <Clock size={12} className="text-lga" /> Rápido
           </span>
-          <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-gray-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 transition-colors cursor-default">
-            <ShieldCheck size={12} className="text-white" /> Seguro
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-gray-200/30 text-[10px] font-bold text-gray-700 shadow-sm transition-colors cursor-default">
+            <ShieldCheck size={12} className="text-lga" /> Seguro
           </span>
-          <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-gray-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 transition-colors cursor-default">
-            <Zap size={12} className="text-white" /> Profissional
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-gray-200/30 text-[10px] font-bold text-gray-700 shadow-sm transition-colors cursor-default">
+            <Zap size={12} className="text-lga" /> Profissional
           </span>
         </motion.div>
 
-        {/* Headline */}
         <motion.h1 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-4xl md:text-6xl font-heading font-light tracking-tight text-white mb-6 leading-[1.1] drop-shadow-2xl"
+          className="text-4xl md:text-7xl font-heading font-light tracking-tight text-black mb-6 leading-[1.1]"
         >
           Serviços elétricos com segurança, rapidez e
-          <span className="block font-normal text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-gray-500">
+          <span className="block font-semibold text-transparent bg-clip-text bg-gradient-to-b from-lga to-black">
             profissionalismo de verdade.
           </span>
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-gray-400 text-sm md:text-base mb-10 max-w-2xl mx-auto leading-relaxed tracking-wide"
+          className="text-gray-600 text-sm md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-medium"
         >
           Diagnóstico claro via WhatsApp ou visita, execução profissional, sem risco, gambiarras ou dor de cabeça.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a 
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden bg-white hover:bg-white/90 text-black font-semibold px-8 py-3 rounded-lg transition-all shadow-lg hover:shadow-white/20 text-sm w-full sm:w-auto hover:scale-105 active:scale-95 duration-200"
+            className="group relative overflow-hidden bg-lga text-white font-medium px-10 py-4 rounded-xl transition-all shadow-xl hover:bg-[#2e3175] active:scale-95 duration-200"
           >
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                <GlowingEffect
-                  spread={20}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                  borderWidth={1}
-                  variant="white"
-                />
-            </div>
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-2 text-base">
               Fale com Especialista no WhatsApp <ArrowRight size={18} />
             </span>
           </a>

@@ -39,6 +39,8 @@ export function WebGLShader({ className }: WebGLShaderProps) {
       }
     `
 
+    // Shader ajustado para TEMA CLARO SUAVE:
+    // Linhas tornam-se cinza muito claro (prata) em fundo branco.
     const fragmentShader = `
       precision highp float;
       uniform vec2 resolution;
@@ -56,11 +58,17 @@ export function WebGLShader({ className }: WebGLShaderProps) {
         float gx = p.x;
         float bx = p.x * (1.0 - d);
 
+        // Intensidade das ondas
         float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale);
         float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);
         float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);
         
-        gl_FragColor = vec4(r, g, b, 1.0);
+        // SUAVIZAÇÃO: Multiplicamos a intensidade por 0.25.
+        // Isso faz com que a subtração de 1.0 seja pequena.
+        // Resultado: Fundo 1.0 (Branco), Linhas ~0.75 (Cinza Claro/Prata).
+        vec3 color = vec3(1.0 - (r * 0.25), 1.0 - (g * 0.25), 1.0 - (b * 0.25));
+        
+        gl_FragColor = vec4(color, 1.0);
       }
     `
 
@@ -68,9 +76,7 @@ export function WebGLShader({ className }: WebGLShaderProps) {
       refs.scene = new THREE.Scene()
       refs.renderer = new THREE.WebGLRenderer({ canvas, alpha: true })
       refs.renderer.setPixelRatio(window.devicePixelRatio)
-      // Use transparent background to blend well with gradients if needed, 
-      // but shader writes full opacity. Keeping black clear color just in case.
-      refs.renderer.setClearColor(new THREE.Color(0x000000), 0)
+      refs.renderer.setClearColor(new THREE.Color(0xffffff), 1) // Fundo branco
 
       refs.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, -1)
 

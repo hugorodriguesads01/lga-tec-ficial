@@ -6,51 +6,48 @@ export const Footer: React.FC = () => {
   const instagramLink = "https://www.instagram.com/lga_tec/";
 
   return (
-    <footer id="contato" className="pt-16 pb-10 border-t border-white/5 bg-black scroll-mt-16">
+    <footer id="contato" className="pt-20 pb-10 border-t border-black/5 bg-gray-50 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
           <div className="md:col-span-2">
              <div className="flex items-center mb-6">
                 <img src="https://i.imgur.com/277Rqxs.png" alt="LGA TEC" className="h-10 w-auto" />
              </div>
-             <p className="text-gray-500 text-sm max-w-xs">
+             <p className="text-gray-600 text-sm max-w-xs font-medium leading-relaxed">
                Serviços elétricos profissionais em Rio Grande do Sul e região. Segurança, qualidade e garantia.
              </p>
           </div>
           
           <div className="md:col-span-1">
-            <h4 className="text-white font-medium mb-6">Serviços</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
-              <li><a href="#" className="hover:text-white transition-colors">Residencial</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Comercial</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Manutenção</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Instalação</a></li>
+            <h4 className="text-[#0A0A0A] font-bold text-sm mb-6 uppercase tracking-wider">Serviços</h4>
+            <ul className="space-y-4 text-sm text-gray-500 font-medium">
+              <li><a href="#" className="hover:text-lga transition-colors">Residencial</a></li>
+              <li><a href="#" className="hover:text-lga transition-colors">Comercial</a></li>
+              <li><a href="#" className="hover:text-lga transition-colors">Manutenção</a></li>
+              <li><a href="#" className="hover:text-lga transition-colors">Instalação</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h4 className="text-white font-medium mb-6">Empresa</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
-              <li><a href="#" className="hover:text-white transition-colors">Sobre Nós</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
+            <h4 className="text-[#0A0A0A] font-bold text-sm mb-6 uppercase tracking-wider">Empresa</h4>
+            <ul className="space-y-4 text-sm text-gray-500 font-medium">
+              <li><a href="#" className="hover:text-lga transition-colors">Sobre Nós</a></li>
+              <li><a href="#" className="hover:text-lga transition-colors">Contato</a></li>
+              <li><a href="#" className="hover:text-lga transition-colors">Política de Privacidade</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h4 className="text-white font-medium mb-6">Social</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h4 className="text-[#0A0A0A] font-bold text-sm mb-6 uppercase tracking-wider">Social</h4>
+            <ul className="space-y-4 text-sm text-gray-500 font-medium">
               <li>
                 <a 
                   href={instagramLink} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 hover:text-white transition-colors"
+                  className="flex items-center gap-2 hover:text-lga transition-colors"
                 >
-                  <span className="p-1 rounded bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                    <Instagram size={16}/>
-                  </span>
-                  Instagram
+                  <Instagram size={16}/> Instagram
                 </a>
               </li>
               <li>
@@ -58,18 +55,15 @@ export const Footer: React.FC = () => {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 hover:text-white transition-colors"
+                  className="flex items-center gap-2 hover:text-lga transition-colors"
                 >
-                  <span className="p-1 rounded bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                    <Phone size={16}/>
-                  </span>
-                  WhatsApp
+                  <Phone size={16}/> WhatsApp
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/5 pt-8 text-center text-xs text-gray-600">
+        <div className="border-t border-black/5 pt-8 text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">
           © 2025 LGA. Todos os direitos reservados.
         </div>
       </div>
