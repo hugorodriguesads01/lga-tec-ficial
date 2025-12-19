@@ -54,7 +54,7 @@ export const GridFeatures: React.FC = () => {
 
   return (
     <section id="beneficios" className="py-12 md:py-20 relative overflow-hidden bg-transparent scroll-mt-16">
-      <div className="absolute inset-x-0 top-0 h-[500px] md:h-full z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
          <img 
             src="https://i.imgur.com/jirpXOy.webp" 
             alt="Eletricista Profissional no Painel" 
